@@ -564,6 +564,7 @@
         
         /* Profile Area */
         .profile-area{
+            margin: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -685,17 +686,14 @@
 <body>
     <main class="bento_box">
         <div class="bento_container" variant-1>
-            <div class="bento_item" style="--rows: span 1; --columns: span 5">
+            <div class="bento_item" style="--rows: span 1; --columns: span 2">
                 <div class="wrapper">
                     <div class="typing-demo">
                         Internet_Of_Thing.
                     </div>
                 </div>
             </div>
-            <div class="bento_item" style="--rows: span 2; --columns: span 2">
-                p
-            </div>
-            <div class="bento_item" style="--rows: span 2; --columns: span 3">
+            <div class="bento_item" style="--rows: span 1; --columns: span 2">
                 <div class="profile-area">
                     <div class="card">
                         
@@ -719,7 +717,32 @@
                     
                 </div>
             </div>
-            <div class="bento_item" style="--rows: span 2; --columns: span 1">
+            <div class="bento_item" style="--rows: span 1; --columns: span 4">
+              <div class="widget_container">
+                <article class="widget">
+                    <div class="weatherIcon" id="weatherIcon">
+                        <i class=""></i>
+                    </div>
+                    <div class="weatherInfo">
+                        <div class="temperature" id="tempID">
+                            temperature error
+                        </div>
+                        <div class="description">
+                            <div class="weatherCondition" id="conditionID">
+                                Kondisi error
+                            </div>
+                            <div class="location">
+                                Coblong, Bandung 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="humidity" id="humidityID">
+                        Kelembapan error
+                    </div>
+                </article>
+            </div>
+            </div>
+            <div class="bento_item" style="--rows: span 1; --columns: span 2">
                 <div class="checkbox-wrapper-20">
                     <div class="switch">
                       <input class="input" type="checkbox" onclick="toggleLED(1)" %CHECKBOX1%  id="checkbox1" />
@@ -740,32 +763,7 @@
                     </div>
                   </div>
             </div>
-            <div class="bento_item" style="--rows: span 2; --columns: span 2">
-                <div class="widget_container">
-                    <article class="widget">
-                        <div class="weatherIcon" id="weatherIcon">
-                            <i class=""></i>
-                        </div>
-                        <div class="weatherInfo">
-                            <div class="temperature" id="tempID">
-                                temperature error
-                            </div>
-                            <div class="description">
-                                <div class="weatherCondition" id="conditionID">
-                                    Kondisi error
-                                </div>
-                                <div class="location">
-                                    Coblong, Bandung 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="humidity" id="humidityID">
-                            Kelembapan error
-                        </div>
-                    </article>
-                </div>
-            </div>
-            <div class="bento_item" style="--rows: span 2; --columns: span 2">
+            <div class="bento_item" style="--rows: span 1; --columns: span 2">
                 <div class="bar_container">
                     <div class="bar_box">
                       <div class="bar_shadow"></div>
