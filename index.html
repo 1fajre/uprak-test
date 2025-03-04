@@ -1,280 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bento K2</title>
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Poiret+One);
-      @import url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+    @import url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css);
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
 
-        body{
-            margin: 0;
-            padding: 0;
-        }
-
-        .bento_box{
-            display: flex;
-            flex-wrap: wrap;
-            min-block-size: 100vh;
-            gap: 1ch;
-            padding: 1ch;
-        }
-
-        .bento_container{
-            
-            display: grid;
-            grid-template-rows: 3fr 3fr 3fr 3fr 3fr;
-            gap: 1ch;
-            min-height: inherit;
-            flex: 2 0 320px;
-        }
-        .bento_container[variant-1]{
-            --bg:#cfd1e1;
-            grid-template-columns: 1fr 1fr 1fr 1fr ;
-        }
-
-        .bento_container[variant-2]{
-            --bg:#7c7d86;
-            grid-template-columns: 1fr 2fr 3fr;
-        }
-
-        .bento_item{
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            grid-column: var(--columns, span 1);
-            grid-row: var(--rows, span 1);
-            background-color: var(--bg);
-            border-radius: 1rem;
-
-            position: relative;
-            display: grid;
-            place-items: center;
-        }
-
-
-
-/*BUTTON*/
-  @supports (-webkit-appearance: none) or (-moz-appearance: none) {
-    .checkbox-wrapper-14 input[type=checkbox] {
-      --active: #275EFE;
-      --active-inner: #fff;
-      --focus: 2px rgba(39, 94, 254, .3);
-      --border: #BBC1E1;
-      --border-hover: #275EFE;
-      --background: #fff;
-      --disabled: #F6F8FF;
-      --disabled-inner: #E1E6F9;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      height: 21px;
-      outline: none;
-      display: inline-block;
-      vertical-align: top;
-      position: relative;
+    body{
       margin: 0;
-      cursor: pointer;
-      border: 1px solid var(--bc, var(--border));
-      background: var(--b, var(--background));
-      transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+      padding: 0;
+      background-color: rgb(62, 62, 62);
+      
     }
-    .checkbox-wrapper-14 input[type=checkbox]:after {
-      content: "";
-      display: block;
-      left: 0;
-      top: 0;
+
+    /* typing animation */
+    .wrapper {
+      height: 10vh;
+      /*This part is important for centering*/
+      display: grid;
+      place-items: center;
+      background-color: #fff;
+      color: rgb(62, 62, 62);
+    }
+
+    .typing-demo {
+      width: 18ch;
+      animation: typing 2s steps(18), blink .5s step-end infinite alternate;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid;
+      font-family: monospace;
+      font-size: 2em;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0
+      }
+    }
+        
+    @keyframes blink {
+      50% {
+        border-color: transparent
+      }
+    }
+
+    /* profile */
+    :root {
+    --fir-font-article: "adobe-garamond-pro", "Times New Roman", Times;
+      --fir-font-header: "foco", Helvetica;
+      --fir-blue-twitter-alpha: rgba(85,172,238, 0.6);
+      --fir-color-grey: #fff;
+    }
+
+    .fir-clickcircle {
+      height: 80px;
+      width: 80px;
+      border-radius: 100px;
+      cursor: pointer;
+    }
+
+    .fir-image-figure {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      position: relative;
+      text-decoration: none;
+      justify-content: center; 
+      margin-top: 20px;
+    }
+
+    .fir-image-figure .caption, .fir-image-figure figcaption {
+      padding-left: 15px;
+    }
+
+    html.wf-active .fir-image-figure .fig-author-figure-title {
+      font-family: var(--fir-font-header);
+      font-size: 16px;
+    }
+
+    .fir-image-figure .fig-author-figure-title {
+      color: var(--fir-color-grey);
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      margin-top: 2px;
+      padding: 5px;
+    }
+
+    .fir-imageover {
+      position: relative;
+      display: flex;
+    }
+
+    .fir-imageover-color {
+      height: 80px;
+      width: 80px;
       position: absolute;
-      transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
-    }
-    .checkbox-wrapper-14 input[type=checkbox]:checked {
-      --b: var(--active);
-      --bc: var(--active);
-      --d-o: .3s;
-      --d-t: .6s;
-      --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
-    }
-    .checkbox-wrapper-14 input[type=checkbox]:disabled {
-      --b: var(--disabled);
-      cursor: not-allowed;
-      opacity: 0.9;
-    }
-    .checkbox-wrapper-14 input[type=checkbox]:disabled:checked {
-      --b: var(--disabled-inner);
-      --bc: var(--border);
-    }
-    .checkbox-wrapper-14 input[type=checkbox]:disabled + label {
-      cursor: not-allowed;
-    }
-    .checkbox-wrapper-14 input[type=checkbox]:hover:not(:checked):not(:disabled) {
-      --bc: var(--border-hover);
-    }
-    .checkbox-wrapper-14 input[type=checkbox]:focus {
-      box-shadow: 0 0 0 var(--focus);
-    }
-    .checkbox-wrapper-14 input[type=checkbox]:not(.switch) {
-      width: 21px;
-    }
-    .checkbox-wrapper-14 input[type=checkbox]:not(.switch):after {
-      opacity: var(--o, 0);
-    }
-    .checkbox-wrapper-14 input[type=checkbox]:not(.switch):checked {
-      --o: 1;
-    }
-    .checkbox-wrapper-14 input[type=checkbox] + label {
-      display: inline-block;
-      vertical-align: middle;
+      background: var(--fir-blue-twitter-alpha);
+      background-image: none;
+      border-radius: 100px;
       cursor: pointer;
-      margin-left: 4px;
+      transition: background .5s ease-in-out;
+      animation: fadeInFadeOut 4s infinite;
+      top: 0;
+      left: 0;
     }
 
-    .checkbox-wrapper-14 input[type=checkbox]:not(.switch) {
-      border-radius: 7px;
+    .fir-imageover-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: fadeInFadeOut 4s infinite;
     }
-    .checkbox-wrapper-14 input[type=checkbox]:not(.switch):after {
-      width: 5px;
-      height: 9px;
-      border: 2px solid var(--active-inner);
-      border-top: 0;
-      border-left: 0;
-      left: 7px;
-      top: 4px;
-      transform: rotate(var(--r, 20deg));
-    }
-    .checkbox-wrapper-14 input[type=checkbox]:not(.switch):checked {
-      --r: 43deg;
-    }
-    .checkbox-wrapper-14 input[type=checkbox].switch {
-      width: 38px;
-      border-radius: 11px;
-    }
-    .checkbox-wrapper-14 input[type=checkbox].switch:after {
-      left: 2px;
-      top: 2px;
-      border-radius: 50%;
-      width: 17px;
-      height: 17px;
-      background: var(--ab, var(--border));
-      transform: translateX(var(--x, 0));
-    }
-    .checkbox-wrapper-14 input[type=checkbox].switch:checked {
-      --ab: var(--active-inner);
-      --x: 17px;
-    }
-    .checkbox-wrapper-14 input[type=checkbox].switch:disabled:not(:checked):after {
-      opacity: 0.6;
-    }
-  }
 
-  .checkbox-wrapper-14 * {
-    box-sizing: inherit;
-  }
-  .checkbox-wrapper-14 *:before,
-  .checkbox-wrapper-14 *:after {
-    box-sizing: inherit;
-  }
+    @keyframes fadeInFadeOut {
+      0%   { opacity:1; }
+      50%  { opacity:0; }
+      100% { opacity:1; }
+    }
 
-  .checkbox-wrapper-20 {
-    --slider-height: 8px;
-    --slider-width: calc(var(--slider-height) * 4);
-    --switch-height: calc(var(--slider-height) * 3);
-    --switch-width: var(--switch-height);
-    --switch-shift: var(--slider-height);
-    --transition: all 0.2s ease;
+    /* widgte cuaca */
+    .widget{
+             position: relative;
+              margin: 0 auto;
+             display: flex;
+             height: 200px;
+             width: 300px;
+             transform: translate(-50%, -50%);
+             flex-wrap: wrap;
+             cursor: pointer;
+             border-radius: 20px;
+             box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3),
+               0 17px 17px 0 rgba(0, 0, 0, 0.15);
+           }
+           
+     
+             .weatherIcon {
+               flex: 1 100%;
+               height: 60%;
+               border-top-left-radius: 20px;
+               border-top-right-radius: 20px;
+               background: #fafafa;
+               font-family: weathericons;
+               display: flex;
+               align-items: center;
+               justify-content: space-around;
+               font-size: 100px;
+     
+              
+             }
+             i {
+                 padding-top: 30px;
+               }
+     
+             .weatherInfo {
+               flex: 0 0 70%;
+               height: 50%;
+               background: #080705;
+               display: flex;
+               align-items: center;
+               color: white;
+             }
+     
+           .temperature {
+            margin-left: 10px;
+                 flex: 0 0 40%;
+                 width: 100%;
+                 font-size: 65px;
+                 display: flex;
+                 justify-content: space-around;
+               }
+     
+               .description {
+                padding: 5px;
+                 flex: 0 60%;
+                 display: flex;
+                 flex-direction: column;
+                 width: 93px;                 
+                 /* width: 108px; */
+                 height: 100%;
+                 justify-content: center;
+               }
+     
+                 .weatherCondition {
+                   text-transform: uppercase;
+                   font-size: 20px;
+                   font-weight: 100;
+                 }
+     
+                 .location {
+                   font-size: 15px;
+                 }
+               
+             
+     
+             .humidity {
+               flex: 0 0 100%;
+               height: 40%;
+               background: #70c1b3;
+               border-bottom-right-radius: 20px;
+               border-bottom-left-radius: 20px;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               color: white;
+               font-size: 30px;
+               font-weight: 800;
+             }
+           
+     
+           p {
+             position: fixed;
+             bottom: 0%;
+             right: 2%;
+           }
+             a {
+               text-decoration: none;
+               color: #e4d6a7;
+               font-size: 10px;
+             }
+            .widget_container{
+                padding: 0;
+                margin: 150px auto;
+                height: 100px;
+                width: 0px;
+            }
 
-    --switch-on-color: #ef0460;
-    --slider-on-color: #fc5d9b;
-
-    --switch-off-color: #eeeeee;
-    --slider-off-color: #c5c5c5;
-  }
-
-  .checkbox-wrapper-20 .switch {
-    display: block;
-  }
+    /* lampu */
+    .lampu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+    .switch {
+      margin: 10px;
+      margin-left: 40px;
+      
+    --line: #E8EBFB;
+    --dot: #275EFE;
+    --circle: #D3D4EC;
+    --background: #fff;
+    --duration: .3s;
+    --text: #9EA0BE;
+    --shadow: 0 1px 3px #{rgba(#00093D, .08)};
     
-  .checkbox-wrapper-20 .switch .slider {
-    position: relative;
-    display: inline-block;
-    height: var(--slider-height);
-    width: var(--slider-width);
-    border-radius: var(--slider-height);
     cursor: pointer;
-    background: var(--slider-off-color);
-    transition: var(--transition);
-  }
-      
-  .checkbox-wrapper-20 .switch .slider:after {
-    background: var(--switch-off-color);
-    position: absolute;
-    left: calc(-1 * var(--switch-shift));
-    top: calc((var(--slider-height) - var(--switch-height)) / 2);
-    display: block;
-    width: var(--switch-height);
-    height: var(--switch-width);
-    border-radius: 50%;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, .2);
-    content: '';
-    transition: var(--transition);
-  }
-    
-  .checkbox-wrapper-20 .switch label {
-    margin-right: 7px;
-  }
-    
-  .checkbox-wrapper-20 .switch .input {
-    display: none;
-  }
-      
-  .checkbox-wrapper-20 .switch .input ~ .label {
-    margin-left: var(--slider-height);
-  }
-         
-  .checkbox-wrapper-20 .switch .input:checked ~ .slider:after {
-    left: calc(var(--slider-width) - var(--switch-width) + var(--switch-shift));
-  }
-    
-  .checkbox-wrapper-20 .switch .input:checked ~ .slider {
-    background: var(--slider-on-color);
-  }
-
-  .checkbox-wrapper-20 .switch .input:checked ~ .slider:after {
-    background: var(--switch-on-color);
-  }
-
-
-/* BAR PERSEN */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+    position: relative;
+    &:before {
+        content: '';
+        width: 60px;
+        height: 32px;
+        border-radius: 16px;
+        background: var(--background);
+        position: absolute;
+        left: 0;
+        top: 0;
+        box-shadow: var(--shadow);
+    }
+    input {
+        display: none;
+        & + div {
+            position: relative;
+            &:before,
+            &:after {
+                --s: 1;
+                content: '';
+                position: absolute;
+                height: 4px;
+                top: 14px;
+                width: 24px;
+                background: var(--line);
+                transform: scaleX(var(--s));
+                transition: transform var(--duration) ease;
+            }
+            &:before {
+                --s: 0;
+                left: 4px;
+                transform-origin: 0 50%;
+                border-radius: 2px 0 0 2px;
+            }
+            &:after {
+                left: 32px;
+                transform-origin: 100% 50%;
+                border-radius: 0 2px 2px 0;
+            }
+            span {
+                padding-left: 60px;
+                line-height: 28px;
+                color: var(--text);
+                &:before {
+                    --x: 0;
+                    --b: var(--circle);
+                    --s: 4px;
+                    content: '';
+                    position: absolute;
+                    left: 4px;
+                    top: 4px;
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    box-shadow: inset 0 0 0 var(--s) var(--b); 
+                    transform: translateX(var(--x));
+                    transition: box-shadow var(--duration) ease, transform var(--duration) ease;
+                    }
+                    &:not(:empty) {
+                        padding-left: 68px;
+                    }
+                }
+            }
+            &:checked {
+                & + div {
+                    &:before {
+                        --s: 1;
+                    }
+                    &:after {
+                        --s: 0;
+                    }
+                    span {
+                        &:before {
+                            --x: 28px;
+                            --s: 12px;
+                            --b: var(--dot);
+                        }
+                    }
+                }
+            }
+          }
         }
 
-        :root{
+    /* bar jarak */
+    :root{
             --num: 0;
             /* fungsinya sebagai nilai default suhu */
         }
 
-        .bar_container {
-        width: 70%;
-        min-height: 30ch;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 80px 100px;
-        overflow: hidden;
-        /* background: #cfd1e1; */
-        }
+    .bar_container {
+      width: 50%;
+      min-height: 30ch;
+      display: flex;
+      justify-content: center;  /* Menyusun konten secara horizontal di tengah */
+      align-items: center;     /* Menyusun konten secara vertikal di tengah */
+      flex-wrap: wrap;
+      gap: 80px 100px;
+      overflow: hidden;
+      position: absolute;      /* Posisi absolute agar bisa ditempatkan sesuai keinginan */
+      left: 50%;               /* Menyusun di tengah secara horizontal */
+      transform: translateX(-50%); /* Geser ke kiri sebesar 50% dari lebar kontainer */
+    }
 
         .bar_box {
         position: relative;
         width: 240px;
-        height: 250px;
-        display: flex;
+        height: 300px;
+    
         justify-content: center;
         align-items: center;
         }
@@ -286,7 +370,6 @@
         left: 0;
         width: 20px;
         height: 100%;
-        background: linear-gradient(#fff, #fff, #e3e3e3);
         filter: blur(1px);
         z-index: 1;
         }
@@ -298,7 +381,6 @@
         right: -1px;
         width: 20px;
         height: 100%;
-        background: #9d9d9d;
         filter: blur(1px);
         z-index: 1;
         }
@@ -307,7 +389,6 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background: #eee;
         }
 
         .bar_box .shadow::before {
@@ -336,12 +417,6 @@
         position: relative;
         width: 100%;
         height: 100%;
-        background: linear-gradient(#dbdae1, #a3aaba);
-        box-shadow: 5px 5px 5px rgba(0,0,0,0.1),
-            15px 15px 15px rgba(0,0,0,0.1),
-            20px 20px 20px rgba(0,0,0,0.1),
-            50px 50px 50px rgba(0,0,0,0.1),
-            inset 3px 3px 2px #fff;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -364,7 +439,7 @@
         justify-content: center;
         align-items: center;
         color: #fff;
-        font-size: 1.75rem;
+        font-size: 1.5rem;
         letter-spacing: 0.1rem;
         text-transform: uppercase;
         }
@@ -436,11 +511,11 @@
         inset: 0;
         opacity: 0;
         animation: fadeIn 1s linear forwards;
-        animation-delay: 2.5s;
+        animation-delay: 2s;
         }
 
         .bar_box .bar_content .bar_number h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: #555;
         }
 
@@ -448,346 +523,104 @@
         font-weight: 300;
         font-size: 1.5rem;
         }
-    
 
-    /* WIDGET CUACA */
-
-     
-    /* 20px: 20px; */
-     
-           body {
-             font-family: Poiret One;
-           }
-           .widget {
-             position: relative;
-             top: 50%;
-             left: 50%;
-             display: flex;
-             height: 300px;
-             width: 600px;
-             transform: translate(-50%, -50%);
-             flex-wrap: wrap;
-             cursor: pointer;
-             border-radius: 20px;
-             box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3),
-               0 17px 17px 0 rgba(0, 0, 0, 0.15);
-           }
-           
-     
-             .weatherIcon {
-               flex: 1 100%;
-               height: 60%;
-               border-top-left-radius: 20px;
-               border-top-right-radius: 20px;
-               background: #fafafa;
-               font-family: weathericons;
-               display: flex;
-               align-items: center;
-               justify-content: space-around;
-               font-size: 100px;
-     
-              
-             }
-             i {
-                 padding-top: 30px;
-               }
-     
-             .weatherInfo {
-               flex: 0 0 70%;
-               height: 40%;
-               background: #080705;
-               border-bottom-left-radius: 20px;
-               display: flex;
-               align-items: center;
-               color: white;
-             }
-     
-           .temperature {
-                 flex: 0 0 40%;
-                 width: 100%;
-                 font-size: 65px;
-                 display: flex;
-                 justify-content: space-around;
-               }
-     
-               .description {
-                 flex: 0 60%;
-                 display: flex;
-                 flex-direction: column;
-                 width: 100%;
-                 height: 100%;
-                 justify-content: center;
-               }
-     
-                 .weatherCondition {
-                   text-transform: uppercase;
-                   font-size: 35px;
-                   font-weight: 100;
-                 }
-     
-                 .location {
-                   font-size: 15px;
-                 }
-               
-             
-     
-             .humidity {
-               flex: 0 0 30%;
-               height: 40%;
-               background: #70c1b3;
-               border-bottom-right-radius: 20px;
-               display: flex;
-               justify-content: space-around;
-               align-items: center;
-               color: white;
-               font-size: 30px;
-               font-weight: 800;
-             }
-           
-     
-           p {
-             position: fixed;
-             bottom: 0%;
-             right: 2%;
-           }
-             a {
-               text-decoration: none;
-               color: #e4d6a7;
-               font-size: 10px;
-             }
-            .widget_container{
-                padding: 0;
-                margin: 150px auto;
-                height: 100px;
-                width: 600px;
-            }
-        
-        /* Profile Area */
-        .profile-area{
-            margin: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 60%;
-            width: 60%;
-            
-            
-            border-radius: 25px;
-        }
-
-        @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
-
-        .card {
-        background: #fff;
-        border-radius: 4px;
-        box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
-        max-width: 400px;
-        display: flex;
-        flex-direction: row;
-        border-radius: 25px;
-        position: relative;
-        }
-        .card h2 {
-        margin: 0;
-        padding: 0 1rem;
-        }
-        .card .title {
-        padding: 1rem;
-        text-align: right;
-        color: green;
-        font-weight: bold;
-        font-size: 12px;
-        }
-        .card .desc {
-        padding: 0.5rem 1rem;
-        font-size: 12px;
-        }
-        .card .actions {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        align-items: center;
-        padding: 0.5rem 1rem;
-        }
-        .card svg {
-        width: 85px;
-        height: 85px;
-        margin: 0 auto;
-        }
-
-        .img-avatar {
-        width: 80px;
-        height: 80px;
-        position: absolute;
-        border-radius: 50%;
-        border: 6px solid white;
-        background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
-        top: 15px;
-        left: 85px;
-        }
-
-        .card-text {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        }
-
-        .title-total {
-        padding: 2.5em 1.5em 1.5em 1.5em;
-        }
-
-        path {
-        fill: white;
-        }
-
-        .img-portada {
-        width: 100%;
-        }
-
-        .portada {
-        width: 100%;
-        height: 100%;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        background-image: url("https://m.media-amazon.com/images/S/aplus-media/vc/cab6b08a-dd8f-4534-b845-e33489e91240._CR75,0,300,300_PT0_SX300__.jpg");
-        background-position: bottom center;
-        background-size: cover;
-        }
-
-        .wrapper {
-  height: 10vh;
-  /*This part is important for centering*/
-  display: grid;
-  place-items: center;
-}
-
-.typing-demo {
-  width: 18ch;
-  animation: typing 2s steps(18), blink .5s step-end infinite alternate;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid;
-  font-family: monospace;
-  font-size: 2em;
-}
-
-@keyframes typing {
-  from {
-    width: 0
-  }
-}
-    
-@keyframes blink {
-  50% {
-    border-color: transparent
-  }
-}
-    </style>
+  </style>
 </head>
 <body>
-    <main class="bento_box">
-        <div class="bento_container" variant-1>
-            <div class="bento_item" style="--rows: span 1; --columns: span 2">
-                <div class="wrapper">
-                    <div class="typing-demo">
-                        Internet_Of_Thing.
-                    </div>
+
+  <div class="wrapper">
+    <div class="typing-demo">
+        Internet_Of_Thing.
+    </div>
+  </div>
+
+  <figure class="fir-image-figure">
+
+    <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+      <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+      <div class="fir-imageover-color"></div>
+      <img class="fir-imageover-image fir-clickcircle" src="https://www.speccorporation.com/wp-content/uploads/2019/12/iot-circle.png" />
+    </a>
+  
+    <figcaption>
+      <div class="fig-author-figure-title">Abdul Fajar Septiawan</div>
+      <div class="fig-author-figure-title">SMK AL-FALAH BANDUNG</div>
+      <div class="fig-author-figure-title">Rekayasa Perangkat Lunak &#8212; 12 K2</div>
+    </figcaption>
+  </figure>
+
+  <hr color="#fff" size="3%">
+
+  <div class="widget_container">
+    <article class="widget">
+        <div class="weatherIcon" id="weatherIcon">
+            <i class=""></i>
+        </div>
+        <div class="weatherInfo">
+            <div class="temperature" id="tempID">
+                temperature error
+            </div>
+            <div class="description">
+                <div class="weatherCondition" id="conditionID">
+                    Kondisi error
                 </div>
-            </div>
-            <div class="bento_item" style="--rows: span 1; --columns: span 2">
-                <div class="profile-area">
-                    <div class="card">
-                        
-                        <div class="card-text">
-                          <div class="portada">
-                          
-                          </div>
-                          <div class="title-total">   
-                            <div class="title">Ant Collector</div>
-                            <h2>Morgan Sweeney</h2>
-                        
-                        <div class="desc">Morgan has collected ants since they were six years old and now has many dozen ants but none in their pants.</div>
-                        <div class="actions">
-                          <button><i class="far fa-heart"></i></button>
-                          <button><i class="far fa-envelope"></i></button>
-                          <button><i class="fas fa-user-friends"></i></button>
-                        </div></div>
-                       
-                        </div>
-                    </div>
-                    
+                <div class="location">
+                    Coblong, Bandung 
                 </div>
-            </div>
-            <div class="bento_item" style="--rows: span 1; --columns: span 4">
-              <div class="widget_container">
-                <article class="widget">
-                    <div class="weatherIcon" id="weatherIcon">
-                        <i class=""></i>
-                    </div>
-                    <div class="weatherInfo">
-                        <div class="temperature" id="tempID">
-                            temperature error
-                        </div>
-                        <div class="description">
-                            <div class="weatherCondition" id="conditionID">
-                                Kondisi error
-                            </div>
-                            <div class="location">
-                                Coblong, Bandung 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="humidity" id="humidityID">
-                        Kelembapan error
-                    </div>
-                </article>
-            </div>
-            </div>
-            <div class="bento_item" style="--rows: span 1; --columns: span 2">
-                <div class="checkbox-wrapper-20">
-                    <div class="switch">
-                      <input class="input" type="checkbox" onclick="toggleLED(1)" %CHECKBOX1%  id="checkbox1" />
-                      <label for="checkbox1" class="slider"></label>
-                      
-                    </div>
-                  </div>
-                  <div class="checkbox-wrapper-20">
-                    <div class="switch">
-                      <input class="input" type="checkbox" onclick="toggleLED(2)" %CHECKBOX2%  id="checkbox2" />
-                      <label for="checkbox2" class="slider"></label>
-                    </div>
-                  </div>
-                  <div class="checkbox-wrapper-20">
-                    <div class="switch">
-                      <input class="input" type="checkbox" onclick="toggleLED(3)" %CHECKBOX3%  id="checkbox3" />
-                      <label for="checkbox3" class="slider"></label>
-                    </div>
-                  </div>
-            </div>
-            <div class="bento_item" style="--rows: span 1; --columns: span 2">
-                <div class="bar_container">
-                    <div class="bar_box">
-                      <div class="bar_shadow"></div>
-                      <div class="bar_content">
-                        <div class="percent" data-text="Jarak" style="--num: 50">
-                          <div class="bar_dot"></div>
-                          <svg>
-                            <circle cx="70" cy="70" r="70"></circle>
-                            <circle cx="70" cy="70" r="70"></circle>
-                          </svg>
-                        </div>
-                        <div class="bar_number">
-                          <h2 id="percentage"><span>cm</span></h2>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
             </div>
         </div>
-    </main>
-</body>
+        <div class="humidity" id="humidityID">
+            Kelembapan error
+        </div>
+    </article>
+  </div>
+  
+  <hr color="#fff" size="3%">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="module">
+  <div class="lampu">             
+    <label class="switch">
+      <input type="checkbox" onclick="toggleLED(1)" %CHECKBOX1%  id="checkbox1">
+      <div>
+          <span>Lampu 1</span>
+      </div>
+    </label>
+    <label class="switch">
+      <input type="checkbox" onclick="toggleLED(2)" %CHECKBOX2%  id="checkbox2">
+      <div>
+          <span>Lampu 2</span>
+      </div>
+    </label>
+    <label class="switch">
+      <input type="checkbox" onclick="toggleLED(3)" %CHECKBOX3%  id="checkbox3">
+      <div>
+          <span>Lampu 3</span>
+      </div>
+    </label>
+  </div>
+
+  <hr color="#fff" size="3%">
+
+  <div class="bar_container">
+    <div class="bar_box">
+      <div class="bar_shadow"></div>
+      <div class="bar_content">
+        <div class="percent" data-text="Jarak" style="--num: 50">
+          <div class="bar_dot"></div>
+          <svg>
+            <circle cx="70" cy="70" r="70"></circle>
+            <circle cx="70" cy="70" r="70"></circle>
+          </svg>
+        </div>
+        <div class="bar_number">
+          <h2 id="percentage"><span>cm</span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Config Firebase -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="module">
     import { initializeApp } from  "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
     import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-database.js";
 
@@ -801,6 +634,7 @@
     appId: "1:815476436643:web:f34221c159e9c870d6d916"
   };
 
+    
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
     const ledRef = ref(db, 'dataLED');
@@ -877,7 +711,7 @@
     humidityElement.textContent = `${humidityValue}%`;
 
     // Tentukan ikon cuaca berdasarkan kelembapan
-    let iconClass = "wi wi-meteor";  // default icon
+    let iconClass = "wi wi-na";  // default icon
     if (humidityValue < 30) {
         iconClass = "wi wi-hot";  // icon panas
     } else if (humidityValue >= 30 && humidityValue < 50) {
@@ -919,5 +753,5 @@
       .catch(()=> console.log ("led eRAWR to updated"));
     };
 </script>
-
+</body>
 </html>
