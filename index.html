@@ -12,7 +12,7 @@
     body{
       margin: 0;
       padding: 0;
-      background-color: rgb(62, 62, 62);
+      background-color: rgb(34, 34, 34);
       
     }
 
@@ -125,111 +125,62 @@
     }
 
     /* widgte cuaca */
-    .widget{
-             position: relative;
-              margin: 0 auto;
-             display: flex;
-             height: 200px;
-             width: 300px;
-             transform: translate(-50%, -50%);
-             flex-wrap: wrap;
-             cursor: pointer;
-             border-radius: 20px;
-             box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3),
-               0 17px 17px 0 rgba(0, 0, 0, 0.15);
-           }
-           
-     
-             .weatherIcon {
-               flex: 1 100%;
-               height: 60%;
-               border-top-left-radius: 20px;
-               border-top-right-radius: 20px;
-               background: #fafafa;
-               font-family: weathericons;
-               display: flex;
-               align-items: center;
-               justify-content: space-around;
-               font-size: 100px;
-     
-              
-             }
-             i {
-                 padding-top: 30px;
-               }
-     
-             .weatherInfo {
-               flex: 0 0 70%;
-               height: 50%;
-               background: #080705;
-               display: flex;
-               align-items: center;
-               color: white;
-             }
-     
-           .temperature {
-            margin-left: 10px;
-                 flex: 0 0 40%;
-                 width: 100%;
-                 font-size: 65px;
-                 display: flex;
-                 justify-content: space-around;
-               }
-     
-               .description {
-                padding: 5px;
-                 flex: 0 60%;
-                 display: flex;
-                 flex-direction: column;
-                 width: 93px;                 
-                 /* width: 108px; */
-                 height: 100%;
-                 justify-content: center;
-               }
-     
-                 .weatherCondition {
-                   text-transform: uppercase;
-                   font-size: 20px;
-                   font-weight: 100;
-                 }
-     
-                 .location {
-                   font-size: 15px;
-                 }
-               
-             
-     
-             .humidity {
-               flex: 0 0 100%;
-               height: 40%;
-               background: #70c1b3;
-               border-bottom-right-radius: 20px;
-               border-bottom-left-radius: 20px;
-               display: flex;
-               justify-content: center;
-               align-items: center;
-               color: white;
-               font-size: 30px;
-               font-weight: 800;
-             }
-           
-     
-           p {
-             position: fixed;
-             bottom: 0%;
-             right: 2%;
-           }
-             a {
-               text-decoration: none;
-               color: #e4d6a7;
-               font-size: 10px;
-             }
-            .widget_container{
-                padding: 0;
-                margin: 150px auto;
-                height: 100px;
-                width: 0px;
-            }
+    .boxWeather {
+        background-color: #2a2a2a;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 330px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        margin: 20px auto; /* Tengah secara horizontal */
+    }
+
+    .weatherIcon{
+        height: 60%;
+        color: #fafafa;
+        font-family: weathericons;
+        font-size: 100px;
+    }
+    .weather {
+      color: white;
+      font-family: Arial, sans-serif;
+      
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .box {
+      background-color: #2a2a2a;
+      padding: 40px 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 120px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+    }
+
+    .label {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .location {
+        background-color: #2a2a2a;
+        color: #fff;
+        padding: 10px 10px;
+        border-radius: 10px;
+        text-align: center;
+        width: 330px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        margin: 20px auto; /* Tengah secara horizontal */
+    }
 
     /* lampu */
     .lampu {
@@ -550,30 +501,25 @@
   </figure>
 
   <hr color="#fff" size="3%">
-
-  <div class="widget_container">
-    <article class="widget">
-        <div class="weatherIcon" id="weatherIcon">
-            <i class=""></i>
-        </div>
-        <div class="weatherInfo">
-            <div class="temperature" id="tempID">
-                temperature error
-            </div>
-            <div class="description">
-                <div class="weatherCondition" id="conditionID">
-                    Kondisi error
-                </div>
-                <div class="location">
-                    Coblong, Bandung 
-                </div>
-            </div>
-        </div>
-        <div class="humidity" id="humidityID">
-            Kelembapan error
-        </div>
-    </article>
+  
+  <div class="boxWeather">
+    <div class="weatherIcon" id="weatherIcon">
+        <i class=""></i>
+    </div>
   </div>
+  <div class="weather">
+    <div class="box">
+      <div class="temperature" id="tempID">Cool</div>
+    </div>
+    <div class="box">
+      <div class="weatherCondition" id="conditionID">Warm</div>
+    </div>
+    <div class="box">
+        <div class="humidity" id="humidityID">Cool</div>
+      </div>
+  </div>
+  <div class="location"><h2>Coblong, Bandung</h1></div>
+  
   
   <hr color="#fff" size="3%">
 
