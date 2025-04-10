@@ -83,6 +83,8 @@
       font-size: 18px;
       margin-top: 2px;
       padding: 5px;
+      text-align: center; /* Memusatkan teks */
+      
     }
 
 
@@ -254,6 +256,15 @@
   initial-value: 0;
 }
 
+.text-jarak {
+  color: white; /* Warna teks */
+  font-size: 30px; /* Ukuran font */
+  margin-bottom: 20px; /* Jarak antara teks dan elemen pie*/
+  text-align: center; /* Pusatkan teks */
+  font-family: Arial, sans-serif; /* Font teks */
+ 
+}
+
 .pie {
   --p:20;
   --b:22px;
@@ -308,15 +319,15 @@
   background-color: #2a2a2a;
   padding: 20px 40px;
   border-radius: 10px;
-  text-align: center;
-  width: fit-content; /* Menyesuaikan lebar konten */
-  margin: 20px auto; /* Posisikan ke tengah horizontal */
+  text-align: center; /* Memastikan semua elemen di dalamnya terpusat */
+  width: fit-content; /* Menyesuaikan dengan konten */
+  margin: 20px auto; /* Posisikan elemen ke tengah secara horizontal */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column; /* Atur elemen secara vertikal */
+  justify-content: center; /* Pusatkan secara vertikal */
+  align-items: center; /* Pusatkan secara horizontal */
 }
-
 
   </style>
 </head>
@@ -383,6 +394,7 @@
   <hr color="#fff" size="3%">
     
     <div class="boxBar">
+      <div class="text-jarak">Jarak</div>
       <div class="pie animate percent" style="--p:50;--c:lightblue" id="percentage"></div>
     </div>
 
