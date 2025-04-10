@@ -286,194 +286,75 @@
         }
 
     /* bar jarak */
-    :root{
-            --num: 0;
-            /* fungsinya sebagai nilai default suhu */
-        }
+    @property --p{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
 
-    .bar_container {
-      width: 50%;
-      min-height: 30ch;
-      display: flex;
-      justify-content: center;  /* Menyusun konten secara horizontal di tengah */
-      align-items: center;     /* Menyusun konten secara vertikal di tengah */
-      flex-wrap: wrap;
-      gap: 80px 100px;
-      overflow: hidden;
-      position: absolute;      /* Posisi absolute agar bisa ditempatkan sesuai keinginan */
-      left: 50%;               /* Menyusun di tengah secara horizontal */
-      transform: translateX(-50%); /* Geser ke kiri sebesar 50% dari lebar kontainer */
-    }
+.pie {
+  --p:20;
+  --b:22px;
+  --c:darkred;
+  --w:150px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:var(--w);
+  aspect-ratio:1;
+  position:relative;
+  display:inline-grid;
+  margin:5px;
+  place-content:center;
+  font-size:25px;
+  font-weight:bold;
+  font-family:sans-serif;
+}
+.pie:before,
+.pie:after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+}
+.pie:before {
+  inset:0;
+  background:
+    radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+          mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+.pie:after {
+  inset:calc(50% - var(--b)/2);
+  background:var(--c);
+  transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+}
+.animate {
+  animation:p 1s .5s both;
+}
 
-        .bar_box {
-        position: relative;
-        width: 240px;
-        height: 300px;
-    
-        justify-content: center;
-        align-items: center;
-        }
+.percent{
+    color:#fff;
+    font-size:20px;
+}
 
-        .bar_box::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        height: 100%;
-        filter: blur(1px);
-        z-index: 1;
-        }
+@keyframes p {
+  from{--p:0}
+}
+.boxBar {
+  background-color: #2a2a2a;
+  padding: 20px 40px;
+  border-radius: 10px;
+  text-align: center;
+  width: fit-content; /* Menyesuaikan lebar konten */
+  margin: 20px auto; /* Posisikan ke tengah horizontal */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-        .bar_box::after {
-        content: '';
-        position: absolute;
-        top: 1px;
-        right: -1px;
-        width: 20px;
-        height: 100%;
-        filter: blur(1px);
-        z-index: 1;
-        }
-
-        .bar_box .shadow {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        }
-
-        .bar_box .shadow::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: calc(100% + 5px);
-        width: 100%;
-        height: 200%;
-        background: linear-gradient(rgba(0,0,0,0.075), transparent);
-        transform: skewX(45deg);
-        }
-
-        .bar_box .shadow::after {
-        content: '';
-        position: absolute;
-        bottom: -200%;
-        left: calc(100% + 15px);
-        width: 100%;
-        height: 200%;
-        background: linear-gradient(rgba(0,0,0,0.075), transparent);
-        transform: skewX(45deg);
-        }
-
-        .bar_box .bar_content {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        }
-
-        .bar_box .bar_content .percent {
-        position: relative;
-        width: 150px;
-        height: 150px;
-        }
-
-        .bar_box .bar_content .percent::before {
-        content: attr(data-text);
-        position: absolute;
-        inset: 20px;
-        background: #555;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #fff;
-        font-size: 1.5rem;
-        letter-spacing: 0.1rem;
-        text-transform: uppercase;
-        }
-
-        .bar_box .bar_content .percent svg {
-        position: relative;
-        width: 150px;
-        height: 150px;
-        transform: rotate(270deg);
-        }
-
-        .bar_box .bar_content .percent svg circle {
-        width: 100%;
-        height: 100%;
-        fill: transparent;
-        stroke-width: 3;
-        stroke: rgba(0,0,0,0.05);
-        transform: translate(5px, 5px);
-        }
-
-        .bar_box .bar_content .percent svg circle:nth-child(2) {
-        stroke: #555;
-        stroke-dasharray: 440;
-        stroke-dashoffset: calc(440 - (440 * var(--num)) / 100);
-        opacity: 0;
-        animation: fadeIn 1s linear forwards;
-        animation-delay: 2.5s;
-        }
-
-        @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-        }
-
-        .bar_box .bar_content .percent .bar_dot {
-        position: absolute;
-        inset: 5px;
-        z-index: 10;
-        animation: animateDot 2s linear forwards;
-        }
-
-        @keyframes animateDot {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(calc(3.6deg * var(--num)));
-        }
-        }
-
-        .bar_box .bar_content .percent .bar_dot::before {
-        content: '';
-        position: absolute;
-        top: -7px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 14px;
-        height: 14px;
-        background: #555;
-        border-radius: 50%;
-        }
-
-        .bar_box .bar_content .bar_number {
-        position: relative;
-        inset: 0;
-        opacity: 0;
-        animation: fadeIn 1s linear forwards;
-        animation-delay: 2s;
-        }
-
-        .bar_box .bar_content .bar_number h2 {
-        font-size: 2rem;
-        color: #555;
-        }
-
-        .bar_box .bar_content .bar_number h2 span {
-        font-weight: 300;
-        font-size: 1.5rem;
-        }
 
   </style>
 </head>
@@ -545,24 +426,10 @@
   </div>
 
   <hr color="#fff" size="3%">
-
-  <div class="bar_container">
-    <div class="bar_box">
-      <div class="bar_shadow"></div>
-      <div class="bar_content">
-        <div class="percent" data-text="Jarak" style="--num: 50">
-          <div class="bar_dot"></div>
-          <svg>
-            <circle cx="70" cy="70" r="70"></circle>
-            <circle cx="70" cy="70" r="70"></circle>
-          </svg>
-        </div>
-        <div class="bar_number">
-          <h2 id="percentage"><span>cm</span></h2>
-        </div>
-      </div>
+    
+    <div class="boxBar">
+      <div class="pie animate percent" style="--p:50;--c:lightblue" id="percentage"></div>
     </div>
-  </div>
 
   <!-- Config Firebase -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -619,7 +486,7 @@
         
         // perbarui nilai --num dalam css
         const barPercentElement = document.querySelector(".percent");
-        barPercentElement.style.setProperty("--num", jarakValue);
+        barPercentElement.style.setProperty("--p", jarakValue);
 
         const percentageElement = document.getElementById("percentage");
         percentageElement.textContent = `${jarakValue} cm`;
