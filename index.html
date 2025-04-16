@@ -17,35 +17,15 @@
     }
 
     /* typing animation */
-    .wrapper {
+    .tittle {
       height: 10vh;
       /*This part is important for centering*/
       display: grid;
       place-items: center;
       background-color: #fff;
       color: rgb(62, 62, 62);
-    }
-
-    .typing-demo {
-      width: 18ch;
-      animation: typing 2s steps(18), blink .5s step-end infinite alternate;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 3px solid;
       font-family: monospace;
       font-size: 2em;
-    }
-
-    @keyframes typing {
-      from {
-        width: 0
-      }
-    }
-        
-    @keyframes blink {
-      50% {
-        border-color: transparent
-      }
     }
 
     /* profile */
@@ -56,35 +36,24 @@
       --fir-color-grey: #fff;
     }
 
-    .fir-clickcircle {
-      height: 80px;
-      width: 80px;
-      border-radius: 100px;
-      cursor: pointer;
-    }
-
-    .fir-image-figure {
+    .profile {
       margin: 0;
       display: flex;
       align-items: center;
       margin-bottom: 40px;
       position: relative;
       text-decoration: none;
-      justify-content: center; 
-      
-      
+      justify-content: center;
       margin-top: 20px;
     }
 
-    .fir-image-figure .fig-author-figure-title {
+    .isiProfile {
       color: var(--fir-color-grey);
       font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
       font-weight: 400;
       font-size: 18px;
       margin-top: 2px;
       padding: 5px;
-      text-align: center; /* Memusatkan teks */
-      
     }
 
 
@@ -128,10 +97,9 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
       cursor: pointer;
     }
-
-    .label {
-      margin-top: 10px;
-      font-size: 18px;
+    
+    .judulWeather{
+        margin-bottom: 20px;
     }
 
     .location {
@@ -333,17 +301,15 @@
 </head>
 <body>
 
-  <div class="wrapper">
-    <div class="typing-demo">
-        Internet_Of_Thing.
-    </div>
+  <div class="tittle">
+    Internet_Of_Thing.
   </div>
 
-  <figure class="fir-image-figure">
+  <figure class="profile">
     <figcaption>
-      <div class="fig-author-figure-title">Abdul Fajar Septiawan</div>
-      <div class="fig-author-figure-title">SMK AL-FALAH BANDUNG</div>
-      <div class="fig-author-figure-title">Rekayasa Perangkat Lunak &#8212; 12 K2</div>
+      <div class="isiProfile">Abdul Fajar Septiawan</div>
+      <div class="isiProfile">SMK AL-FALAH BANDUNG</div>
+      <div class="isiProfile">Rekayasa Perangkat Lunak &#8212; 12 K2</div>
     </figcaption>
   </figure>
 
@@ -356,12 +322,15 @@
   </div>
   <div class="weather">
     <div class="box">
+      <div class="judulWeather">Temperatur</div>
       <div class="temperature" id="tempID">Cool</div>
     </div>
     <div class="box">
+      <div class="judulWeather">Kondisi</div>
       <div class="weatherCondition" id="conditionID">Warm</div>
     </div>
     <div class="box">
+        <div class="judulWeather">Kelembapan</div>
         <div class="humidity" id="humidityID">Cool</div>
       </div>
   </div>
@@ -470,7 +439,7 @@
             if (tempValue < 25){
                 conditionElement.textContent = "Dingin";
             } else if (tempValue >= 25 && tempValue < 30){
-                conditionElement.textContent = "Medium";        
+                conditionElement.textContent = "Hangat";        
             } else if (tempValue >= 30 && tempValue < 100){
                 conditionElement.textContent = "Panas";
             } else {
@@ -519,8 +488,6 @@
         console.log("LED status updated", Object.values(data));
       }
     });
-
-    
 
     window.toggleLED = () => {
       const ledState = [1, 2, 3].map(index => document.getElementById (`checkbox${index}`).checked ? 1:0);
